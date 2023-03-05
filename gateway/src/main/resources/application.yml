@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      routes:
+        - id: testRoute        # 路由的唯一id
+          uri: http://localhost:8080/    # 真正访问的URL
+          predicates:
+            - Path=/testRoute/**             # 将以/testRoute开始的服务，转发到http://localhost:8080/中
+          filters:
+            - MyTest=company_name,beike
+
+server:
+  port: 8888
